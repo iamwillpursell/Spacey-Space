@@ -1,2 +1,10 @@
 # Spacey Space
-This project was an exploration into using web requests in React. Each day Spacey Space is updated with a new spectacular photo, title, date, and description that is provided through the APOD api from NASA. This project also includes routing using the 'react-router-dom'.
+
+*Introduction*
+Spacey Space is a simple app that uses the NASA APOD api to get an image, title, date, and description, from NASA to display on the website. The data is updated by NASA every 24hrs.
+
+*Tools Used*
+* NASA APOD API
+* React Router
+
+![Space Space Photo](https://i.ibb.co/ZHdWBCt/spacey-space.png)
