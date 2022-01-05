@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import SignUp from './SignUp';
+import { Container } from 'react-bootstrap';
+import { AuthProvider } from '../contexts/AuthContext';
 
 export default function Home() {
     return (
-        <div className="home">
-            <Link className="home-link" to="/nasaphoto">See into the stars!</Link>
-        </div>
+        <AuthProvider>
+            <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+                <div className='w-100' style={{ maxWidth: "400px" }}>
+                    <SignUp />
+                </div>     
+            </Container>
+        </AuthProvider>
     )
 }
