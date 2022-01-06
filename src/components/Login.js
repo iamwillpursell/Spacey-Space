@@ -17,10 +17,6 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        const firebaseAPI = process.env.FIREBASE_API_KEY;
-        
-        console.log(firebaseAPI);
-
         try {
             setError('')
             setLoading(true)
