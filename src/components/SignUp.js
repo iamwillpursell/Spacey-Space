@@ -1,17 +1,21 @@
 import React, { useRef, useState} from 'react';
 import '../App.css';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { Form, Button, Card, Alert, Row, Col } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext'
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function SignUp() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmationRef = useRef()
+    const firstNameRef = useRef()
+    const lastNameRef = useRef()
     const { signup } = useAuth()
     const [ error, setError ] = useState('')
     const [ loading, setLoading ] = useState(false)
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
 
         if (passwordRef.current.value !== passwordConfirmationRef.current.value) {
@@ -21,9 +25,13 @@ export default function SignUp() {
         try {
             setError('')
             setLoading(true)
-            signup(emailRef.current.value, passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value, firstNameRef.current.value, lastNameRef.current.value)
         } catch {
-            setError('Failed to create an account')
+            setError(toast.error('Failed to create an account!', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+            }))
         }
         setLoading(false)
     }
@@ -33,8 +41,23 @@ export default function SignUp() {
         <Card>
             <Card.Body>
                 <span className="d-flex align-items-center justify-content-center mb-4 emoji-size">🌎</span>
+                <h2 className='text-center mb-2'>Sign Up</h2>
                 {error && <Alert varient="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
+                    <Row>
+                        <Col>
+                            <Form.Group id="firstName">
+                                <Form.Label>First Name</Form.Label>
+                                <Form.Control type="text" ref={firstNameRef} required />
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Group id="lastName">
+                                <Form.Label>Last Name</Form.Label>
+                                <Form.Control type="text" ref={lastNameRef} required />
+                            </Form.Group>
+                        </Col>
+                    </Row>
                     <Form.Group id="email">
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" ref={emailRef} required />
@@ -52,7 +75,7 @@ export default function SignUp() {
             </Card.Body>
         </Card>
         <div className="w-100 text-center text-white mt-2">
-            Already have an account? Log In
+            Already have an account? <Link to="/login">Log In</Link>
         </div>
         </>
     )

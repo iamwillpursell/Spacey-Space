@@ -2,12 +2,11 @@
 
 body {
   font-family: 'Righteous', cursive;
-  color: #d14f4f;
   line-height: 1.7;
   font-size: 19px;
 }
 
-.app {
+#root {
   background-color: rgb(19, 19, 19);
 }
 
