@@ -17,6 +17,10 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault()
 
+        const firebaseAPI = process.env.FIREBASE_API_KEY;
+        
+        console.log(firebaseAPI);
+
         try {
             setError('')
             setLoading(true)
@@ -54,7 +58,7 @@ export default function Login() {
             </Card.Body>
         </Card>
         <div className="w-100 text-center text-white mt-2">
-            Need an Account? <Link to="/signup">Sign Up</Link>
+            Need an Account? <Link to="/signup">Sign Up </Link>
         </div>
         </>
     )
