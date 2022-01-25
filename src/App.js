@@ -5,6 +5,7 @@ import PrivateRoute from "./components/PrivateRoute"
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
+import NasaPOTD from "./components/NasaPOTD"
 // import Stars from "./components/Stars";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Container } from 'react-bootstrap';
@@ -18,6 +19,7 @@ function App() {
         <Router>
           <AuthProvider>
             <Switch>
+              <PrivateRoute exact path="/nasa-potd" component={NasaPOTD} />
               <PrivateRoute exact path="/" component={Dashboard} />
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={Login} />
