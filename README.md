@@ -10,4 +10,4 @@ Spacey Space is a simple app that uses the NASA APOD api to get an image, title,
 
 ![Space Space Photo](https://i.ibb.co/fHzp3jf/Capture.png)
 
-[Check Out Project](https://spacey-space.netlify.app/login)
+[Check Out Project](https://spacey-space.netlify.app/)
